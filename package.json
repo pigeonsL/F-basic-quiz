@@ -34,11 +34,6 @@
     "prettier": "2.0.5",
     "sass": "^1.26.8"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.js": "eslint \"src/\" --cache --fix --format table",
     "*.{js,css,scss,html}": "prettier --write"
