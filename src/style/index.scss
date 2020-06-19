@@ -2,6 +2,6 @@
 @import "mixins";
 @import "reboot";
 
-fetch("http://localhost:8080/hello", { method: "POST" })
+fetch("http://localhost:8080/hello", { method: "GET" })
 .then((response) => response.json())
 .then((content) => console.log(content));
