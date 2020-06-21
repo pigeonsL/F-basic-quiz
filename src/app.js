@@ -1,11 +1,11 @@
 import "./style/index.scss";
-import baseURL from "./api/base";
 
 const id = location.pathname.split("/")[2];
+const url = `http://localhost:8080/users/${id}`;
 
 function changeElementsContent(name, content) {
-  const element = document.getElementsByClassName(name)[0];
-  element.innerHTML = content;
+  const e = document.getElementsByClassName(name)[0];
+  e.innerHTML = content;
 }
 
 function addChildElement(parent, type, content) {
@@ -18,7 +18,7 @@ function addChildElement(parent, type, content) {
 }
 
 const getUserInformation = () => {
-  const information = fetch(baseURL, {
+  const information = fetch(url, {
     method: "GET",
   }).then((response) => response.json());
 
@@ -35,7 +35,6 @@ const getUserInformation = () => {
     addChildElement("description", "p", description);
   });
 };
-
 function constructItem(year, title, description) {
   const li = document.createElement("li");
   const index = document.createElement("span");
@@ -51,13 +50,13 @@ function constructItem(year, title, description) {
   content.appendChild(contentDescription);
   return li;
 }
-
 const getUserEducation = () => {
-  const educationInformation = fetch(`${baseURL}/educations`, {
+  const educationInformation = fetch(`${url}/educations`, {
     method: "GET",
   }).then((response) => response.json());
 
   educationInformation.then((data) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const item of data) {
       const { year, title, description } = item;
       const li = constructItem(year, title, description);
